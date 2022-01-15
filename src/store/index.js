@@ -3,6 +3,7 @@ import { createSlice, configureStore } from '@reduxjs/toolkit';
 //handling cart visibility state
 const initialCartState = {
     isCartShown: false,
+    notification: null
 };
 
 const cartSlice = createSlice({
@@ -11,7 +12,14 @@ const cartSlice = createSlice({
     reducers: {
         toogle(state) {
             state.isCartShown = !state.isCartShown
-        }
+        },
+        showNotification(state, action) {
+          state.notification = {
+            status: action.payload.status,
+            title: action.payload.title,
+            message: action.payload.message,
+          };
+        },
     }
 })
 
